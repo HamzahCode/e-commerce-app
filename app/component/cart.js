@@ -1,8 +1,10 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Image from "next/image";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useEffect, useState } from "react";
-export default function Cart({ viewcart, messagealready }) {
+import { useEffect, useState, useContext } from "react";
+import { AppContext } from "../context/appcontext";
+export default function Cart() {
+  const { cart, alreadyincart } = useContext(AppContext);
   let [total, settotal] = useState(0);
   let [mycart, setmycart] = useState([]);
   let [showcart, setshowcart] = useState(false);
@@ -10,22 +12,21 @@ export default function Cart({ viewcart, messagealready }) {
     setshowcart(!showcart);
   }
   useEffect(() => {
-    if (!messagealready) {
-      setmycart(viewcart);
+    if (!alreadyincart) {
+      setmycart(cart);
     }
-  }, [viewcart]);
+  }, [cart]);
   useEffect(() => {
     let t = 0;
     mycart.forEach((cart) => {
-      console.log(cart);
       t += cart.price;
     });
     settotal(t);
   }, [mycart]);
   function RemoveFromviewcart(cartid) {
-    const updatedViewCart = viewcart.filter((c) => {
+    const updatedViewCart = cart.filter((c) => {
       if (c.id == cartid) {
-        viewcart.splice(viewcart.indexOf(c), 1);
+        cart.splice(cart.indexOf(c), 1);
       }
     });
     setmycart(updatedViewCart);
@@ -56,31 +57,36 @@ export default function Cart({ viewcart, messagealready }) {
           }
         >
           <div className="flex flex-col">
-            {mycart.map((cart) => {
+            {mycart.map((carting) => {
               return (
                 <div
                   className="flex relative justify-between items-center group"
-                  key={cart.id}
+                  key={carting.id}
                 >
                   <div className="flex justify-center items-center m-2">
                     <div className="flex">
-                      <Image src={cart.image} alt="" width={50} height={50} />
+                      <Image
+                        src={carting.image}
+                        alt=""
+                        width={50}
+                        height={50}
+                      />
                       <div className="line ml-1 border-r-[1px] border-r-gray-400 border-solid" />
                     </div>
                     <div className="info flex flex-col">
-                      <div className="text-sm w-52 cursor-default">
-                        {cart.title}
+                      <div className="text-sm w-52 cursor-default text-ellipsis overflow-clip text-nowrap">
+                        {carting.title}
                       </div>
                       <div className="font-bold text-base w-44 flex justify-evenly mx-1 cursor-default">
                         <div>Price:</div>
-                        <div>${cart.price}</div>
+                        <div>${carting.price}</div>
                       </div>
                     </div>
                   </div>
                   <div
                     onClick={() => {
-                      RemoveFromviewcart(cart.id);
-                      let newcart = mycart.filter((c) => c.id !== cart.id);
+                      RemoveFromviewcart(carting.id);
+                      let newcart = mycart.filter((c) => c.id !== carting.id);
                       setmycart(newcart);
                     }}
                     className="cursor-pointer bg-red-500 opacity-0 group-hover:opacity-100 group-hover:right-0 ease-in duration-300 flex justify-center items-center absolute top-0 right-[-25px] h-full"
@@ -94,7 +100,7 @@ export default function Cart({ viewcart, messagealready }) {
             <hr />
             <div>
               <div className="text-sm font-bold text-center">
-                Total: {total}
+                Total: ${total}
               </div>
             </div>
           </div>
