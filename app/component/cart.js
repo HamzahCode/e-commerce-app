@@ -40,7 +40,7 @@ export default function Cart() {
             className={
               mycart == 0
                 ? "hidden"
-                : "flex absolute top-[-4px] right-[-2px] justify-center select-none items-center text-white rounded-full w-[14] h-[14] bg-red-600"
+                : "flex absolute top-[-4px] right-[-2px] justify-center select-none items-center p-1 text-white rounded-full w-[14] h-[14] bg-red-600"
             }
           >
             <div className="text-sm font-normal">

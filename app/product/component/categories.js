@@ -17,7 +17,7 @@ export default function Categories() {
   const { setSelectedCategory } = useContext(AppContext);
   return (
     <>
-      <div className="categ mt-14 grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 justify-center items-center text-center gap-4 place-items-center">
+      <div className="categ mt-14 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 text-center gap-4 place-items-center">
         <div
           className="relative group/lable group flex justify-center items-center flex-col cursor-pointer bg-blue-100 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28  lg:w-36 md:w-28"
           onClick={() => {
@@ -52,7 +52,7 @@ export default function Categories() {
             Audio
           </div>
         </div>
-        <div
+        {/* <div
           className="relative group/lable group flex justify-center items-center flex-col cursor-pointer bg-blue-100 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28  lg:w-36 md:w-28"
           onClick={() => {
             setSelectedCategory("laptop");
@@ -68,7 +68,7 @@ export default function Categories() {
           <div className="lable font-bold absolute bottom-0 left-[50%] translate-y-1/2 -translate-x-1/2 w-full text-center mt-5 ease-in duration-[350ms] opacity-0 group-hover/lable:opacity-100 group-hover/lable:bottom-[50%]">
             Laptop
           </div>
-        </div>
+        </div> */}
         <div
           className="relative group/lable group flex justify-center items-center flex-col cursor-pointer bg-blue-100 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28 lg:w-36 md:w-28"
           onClick={() => {
@@ -103,7 +103,7 @@ export default function Categories() {
             Gaming
           </div>
         </div>
-        <div
+        {/* <div
           className="relative group/lable group flex justify-center items-center flex-col cursor-pointer bg-blue-100 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28  lg:w-36 md:w-28"
           onClick={() => {
             setSelectedCategory("appliances");
@@ -119,7 +119,7 @@ export default function Categories() {
           <div className="lable font-bold absolute bottom-0 left-[50%] translate-y-1/2 -translate-x-1/2 w-full text-center mt-5 ease-in duration-[350ms] opacity-0  group-hover/lable:opacity-100 group-hover/lable:bottom-[50%]">
             Appliances
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="relative m-5">
         <div

@@ -7,7 +7,8 @@ export default function ProductDetails({ params }) {
   const prodid = React.use(params);
   const { productId } = prodid;
   const [product, setproduct] = useState([]);
-  const { setcart, setalreadyincart, cart } = useContext(AppContext);
+  const { setcart, setalreadyincart, cart, alreadyincart } =
+    useContext(AppContext);
   function handleaddtocart(prod) {
     setalreadyincart(false);
     console.log(prod);
@@ -34,9 +35,21 @@ export default function ProductDetails({ params }) {
 
     fetchProducts();
   }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setalreadyincart(null);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [alreadyincart]);
 
   return (
     <>
+      {alreadyincart && (
+        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 bg-red-500 text-white p-2 rounded-md transition-opacity duration-300 ease-in-out opacity-100">
+          Already In The Cart!
+        </div>
+      )}
       <h1 className="text-center font-bold text-4xl mt-10 text-gray-800">
         Product Details
       </h1>

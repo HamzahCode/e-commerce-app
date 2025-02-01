@@ -23,9 +23,7 @@ export default function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await fetch(
-          "https://fakestoreapi.in/api/products?limit=150"
-        );
+        const data = await fetch("https://fakestoreapi.in/api/products");
         const res = await data.json();
         setProducts(res.products);
         setfilters(res.products);
@@ -71,7 +69,7 @@ export default function Products() {
         <hr className="w-full m-4" />
       </div>
 
-      <div className="prod-card grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
+      <div className="prod-card grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 m-2">
         {filters.length > 0 ? (
           filters.map((prod) => (
             <div
@@ -89,10 +87,14 @@ export default function Products() {
                       height={176}
                     />
                   </div>
-                  <div className="prod-name text-ellipsis overflow-clip w-52 text-nowrap text-center m-2">
+                  <div className="prod-name font-bold text-ellipsis overflow-clip w-52 text-nowrap text-center m-2">
                     {prod.title}
                   </div>
-                  <div className="prod-price">${prod.price}</div>
+                  <hr />
+                  <div className="prod-price flex justify-between items-center">
+                    <div className="font-bold">price: </div>
+                    <div className="text-red-500 font-bold">${prod.price}</div>
+                  </div>
                 </div>
               </Link>
               <button
