@@ -78,10 +78,16 @@ export default function Header() {
               />
             </div>
             <ul className="flex flex-col justify-center items-center space-y-5 text-black font-bold">
-              <li className="cursor-pointer opacity-45 hover:opacity-100 text-3xl">
+              <li
+                className="cursor-pointer opacity-45 hover:opacity-100 text-3xl"
+                onClick={handlenav}
+              >
                 <Link href={"/"}>Home</Link>
               </li>
-              <li className="cursor-pointer opacity-45 hover:opacity-100 text-3xl">
+              <li
+                className="cursor-pointer opacity-45 hover:opacity-100 text-3xl"
+                onClick={handlenav}
+              >
                 <Link href={"../product"}>Products</Link>
               </li>
               {/* <li className="cursor-pointer opacity-45 hover:opacity-100 text-3xl">
