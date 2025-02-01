@@ -5,21 +5,30 @@ import Image from "next/image";
 import { AppContext } from "@/app/context/appcontext";
 import Link from "next/link";
 export default function Products() {
-  const { selectedCategory, searchcontent, setcart, setalreadyincart, cart } =
-    useContext(AppContext);
+  const {
+    selectedCategory,
+    searchcontent,
+    setcart,
+    setalreadyincart,
+    cart,
+    setaddedtocart,
+  } = useContext(AppContext);
   const [products, setProducts] = useState([]);
   const [filters, setfilters] = useState([]);
   const [carting, setcarting] = useState([]);
 
   function handleaddtocart(prod) {
     setalreadyincart(false);
+    setaddedtocart(false);
     const isProdincart = cart.some((item) => item.id === prod.id);
     if (isProdincart) {
       setalreadyincart(true);
     } else {
       setcart([...cart, prod]);
+      setaddedtocart(true);
     }
   }
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -98,13 +107,13 @@ export default function Products() {
                 </div>
               </Link>
               <button
-                className="prod-add bg-blue-200 rounded-md p-[5px] m-3 hover:bg-blue-100"
+                className="prod-add border font-bold border-gray-500 border-solid rounded-md p-2 m-3 hover:bg-gray-500 transition-colors duration-500"
                 type="submit"
                 onClick={() => {
                   handleaddtocart(prod);
                 }}
               >
-                <AddShoppingCartIcon className="cart-ico" alt="Add to cart" />
+                {/* <AddShoppingCartIcon className="cart-ico" alt="Add to cart" /> */}
                 Add To Cart
               </button>
             </div>

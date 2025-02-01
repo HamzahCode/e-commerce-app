@@ -7,16 +7,23 @@ export default function ProductDetails({ params }) {
   const prodid = React.use(params);
   const { productId } = prodid;
   const [product, setproduct] = useState([]);
-  const { setcart, setalreadyincart, cart, alreadyincart } =
-    useContext(AppContext);
+  const {
+    setcart,
+    setalreadyincart,
+    cart,
+    alreadyincart,
+    setaddedtocart,
+    addedtocart,
+  } = useContext(AppContext);
   function handleaddtocart(prod) {
     setalreadyincart(false);
-    console.log(prod);
+    setaddedtocart(false);
     const isProdincart = cart.some((item) => item.id === prod.id);
     if (isProdincart) {
       setalreadyincart(true);
     } else {
       setcart([...cart, prod]);
+      setaddedtocart(true);
     }
   }
   useEffect(() => {
@@ -38,16 +45,22 @@ export default function ProductDetails({ params }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setalreadyincart(null);
-    }, 2000);
+      setaddedtocart(null);
+    }, 1000);
 
     return () => clearTimeout(timer);
-  }, [alreadyincart]);
+  }, [alreadyincart, addedtocart]);
 
   return (
     <>
       {alreadyincart && (
         <div className="fixed top-1/2 left-1/2 -translate-x-1/2 bg-red-500 text-white p-2 rounded-md transition-opacity duration-300 ease-in-out opacity-100">
           Already In The Cart!
+        </div>
+      )}
+      {addedtocart && (
+        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 bg-green-500 text-white p-2 rounded-md transition-opacity duration-300 ease-in-out opacity-100">
+          Added To Cart!
         </div>
       )}
       <h1 className="text-center font-bold text-4xl mt-10 text-gray-800">
@@ -111,13 +124,13 @@ export default function ProductDetails({ params }) {
           </div>
 
           <div className="w-full lg:w-1/3 p-5 bg-gray-100 rounded-lg shadow-md">
-            <div className="flex justify-between text-lg font-semibold text-gray-900">
+            <div className="flex justify-between text-lg font-bold text-gray-900">
               <span>Price:</span>
               <span className="text-red-500">${product.price}</span>
             </div>
             <hr className="my-3" />
             <button
-              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+              className="w-full  hover:bg-gray-500 text-black border border-solid border-gray-500 font-bold py-2 px-4 rounded-lg transition duration-200"
               onClick={() => handleaddtocart(product)}
             >
               Add To Cart

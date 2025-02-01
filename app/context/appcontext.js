@@ -8,6 +8,7 @@ export function AppProvider({ children }) {
   const [searchcontent, setsearchcontent] = useState("");
   const [cart, setcart] = useState([]);
   const [alreadyincart, setalreadyincart] = useState("");
+  const [addedtocart, setaddedtocart] = useState("");
   return (
     <AppContext.Provider
       value={{
@@ -19,6 +20,8 @@ export function AppProvider({ children }) {
         setcart,
         alreadyincart,
         setalreadyincart,
+        addedtocart,
+        setaddedtocart,
       }}
     >
       {children}

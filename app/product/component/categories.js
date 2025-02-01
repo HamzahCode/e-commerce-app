@@ -19,7 +19,7 @@ export default function Categories() {
     <>
       <div className="categ mt-14 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 text-center gap-4 place-items-center">
         <div
-          className="relative group/lable group flex justify-center items-center flex-col cursor-pointer bg-blue-100 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28  lg:w-36 md:w-28"
+          className="relative group/lable group flex justify-center items-center flex-col cursor-pointer border border-solid border-gray-500 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28  lg:w-36 md:w-28"
           onClick={() => {
             setSelectedCategory("tv");
             let x = document.querySelector(".clear-categ");
@@ -36,7 +36,7 @@ export default function Categories() {
           </div>
         </div>
         <div
-          className="relative group/lable group flex justify-center items-center flex-col cursor-pointer bg-blue-100 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28  lg:w-36 md:w-28"
+          className="relative group/lable group flex justify-center items-center flex-col cursor-pointer border border-solid border-gray-500 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28  lg:w-36 md:w-28"
           onClick={() => {
             setSelectedCategory("audio");
             let x = document.querySelector(".clear-categ");
@@ -70,7 +70,7 @@ export default function Categories() {
           </div>
         </div> */}
         <div
-          className="relative group/lable group flex justify-center items-center flex-col cursor-pointer bg-blue-100 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28 lg:w-36 md:w-28"
+          className="relative group/lable group flex justify-center items-center flex-col cursor-pointer border border-solid border-gray-500 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28 lg:w-36 md:w-28"
           onClick={() => {
             setSelectedCategory("mobile");
             let x = document.querySelector(".clear-categ");
@@ -87,7 +87,7 @@ export default function Categories() {
           </div>
         </div>
         <div
-          className="relative group/lable group flex justify-center items-center flex-col cursor-pointer bg-blue-100 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28  lg:w-36 md:w-28"
+          className="relative group/lable group flex justify-center items-center flex-col cursor-pointer border border-solid border-gray-500 rounded-full p-3 h-24 w-24 lg:h-36 md:h-28  lg:w-36 md:w-28"
           onClick={() => {
             setSelectedCategory("gaming");
             let x = document.querySelector(".clear-categ");
@@ -123,7 +123,7 @@ export default function Categories() {
       </div>
       <div className="relative m-5">
         <div
-          className="clear-categ bg-[#ff1e1e] w-20 text-white rounded-md space-x-2 cursor-pointer flex absolute right-0 top-0"
+          className="clear-categ border border-solid border-gray-500 hover:bg-gray-500 w-20 text-black rounded-md space-x-2 cursor-pointer flex absolute right-0 top-0"
           style={{ display: "none" }}
           onClick={(ele) => {
             setSelectedCategory("");

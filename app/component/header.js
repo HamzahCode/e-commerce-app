@@ -22,7 +22,7 @@ export default function Header() {
   };
   return (
     <>
-      <div className="main-header flex items-center left-0 top-0 w-full max-h-16 bg-slate-200 text-center font-medium font-sans shadow-md">
+      <div className="main-header flex items-center left-0 top-0 w-full max-h-16 text-center font-medium font-sans border-b border-solid border-gray-300">
         <div>
           <Link href={"/"}>
             <Image src={e_com_logo} alt="" width={120} height={25} />
@@ -38,12 +38,12 @@ export default function Header() {
               <li className="cursor-pointer opacity-45 hover:opacity-100">
                 <Link href={"../product"}>Products</Link>
               </li>
-              <li className="cursor-pointer opacity-45 hover:opacity-100">
+              {/* <li className="cursor-pointer opacity-45 hover:opacity-100">
                 <Link href={""}>About</Link>
               </li>
               <li className="cursor-pointer opacity-45 hover:opacity-100">
                 <Link href={""}>Contact</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           {/* Drawer Navbar Icon */}
@@ -84,12 +84,12 @@ export default function Header() {
               <li className="cursor-pointer opacity-45 hover:opacity-100 text-3xl">
                 <Link href={"../product"}>Products</Link>
               </li>
-              <li className="cursor-pointer opacity-45 hover:opacity-100 text-3xl">
+              {/* <li className="cursor-pointer opacity-45 hover:opacity-100 text-3xl">
                 About
               </li>
               <li className="cursor-pointer opacity-45 hover:opacity-100 text-3xl">
                 Contact
-              </li>
+              </li> */}
             </ul>
           </div>
 
