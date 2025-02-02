@@ -4,6 +4,9 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Image from "next/image";
 import { AppContext } from "@/app/context/appcontext";
 import Link from "next/link";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 export default function Products() {
   const {
     selectedCategory,
@@ -119,9 +122,34 @@ export default function Products() {
             </div>
           ))
         ) : (
-          <div className="waiting-circle flex justify-center items-center h-64 col-span-full">
-            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
-          </div>
+          <>
+            {Array.from({ length: 12 }).map((_, ind) => {
+              return (
+                <div
+                  key={ind}
+                  className="flex flex-col justify-center items-center animate-pulse border border-solid border-gray-400"
+                >
+                  <div className="bg-[#dddddd] rounded-md w-40 h-40  my-3"></div>
+                  <div className="bg-[#dddddd] w-72 h-5 mb-2"></div>
+                  <div className="bg-[#dddddd] w-72 h-5 mb-2"></div>
+
+                  <div className="bg-[#dddddd] w-40 h-10 mb-2"></div>
+                </div>
+              );
+            })}
+          </>
+
+          // <SkeletonTheme baseColor="#dddddd" highlightColor="#f5f5f5">
+          //   <div className=" grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 m-2 text-center">
+          //     <div>
+          //       <Skeleton width={50} height={50} circle={true} />
+          //       <Skeleton width={200} count={3} />
+          //     </div>
+          //   </div>
+          // </SkeletonTheme>
+          // <div className="waiting-circle flex justify-center items-center h-64 col-span-full">
+          //   <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+          // </div>
         )}
       </div>
     </>
